@@ -50,9 +50,9 @@ module.exports = function(app, passport) {
 
     app.get("*", (req, res) => {
         if (process.env.NODE_ENV === "production") {
-            res.sendFile(__dirname + "../client/build/index.html");
+            res.sendFile(__dirname + "../../client/build/index.html");
         } else {
-            res.sendFile(__dirname + "../client/public/index.html");
+            res.sendFile(__dirname + "../../client/public/index.html");
         }
     });
 
