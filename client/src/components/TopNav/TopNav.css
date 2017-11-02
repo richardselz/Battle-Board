@@ -1,0 +1,27 @@
+.TopNav {
+	font-family: 'Mirza', cursive;
+	font-size: 200%;
+	background-color: black;
+	color: white;
+}
+
+
+img {
+	height: 50px;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}

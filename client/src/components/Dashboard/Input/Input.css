@@ -1,0 +1,18 @@
+input {
+    width: 100% !important; /* force to expand to container's width */  
+    padding: 0 10px !important;
+    margin: 0 -17px; /* negative margin = border-width + horizontal padding */ 
+}
+
+.inputForm {
+	font-family: 'Mirza', cursive;
+	font-size: 24pt;
+}
+
+.formText {
+	font-size: 18pt !important;
+}
+
+.hundred {
+	width: 100% !important;
+}

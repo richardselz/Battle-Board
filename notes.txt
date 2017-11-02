@@ -1,0 +1,2 @@
+- Changed characters/user route to a GET rather then a POST, since it's retrieving not sending data
+- Added back the regex validation in log-reg, test and see if it is working

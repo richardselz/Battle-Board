@@ -1,0 +1,55 @@
+.dashText {
+	font-family: 'Mirza', cursive;
+	font-size: 24pt;
+}
+
+.headerText {
+	font-family: 'Mirza', cursive;
+	font-size: 48pt;
+	color: #428bca;
+}
+
+.formText {
+	font-size: 18pt !important;
+}
+
+.buttonText {
+	font-size: 150%;
+}
+
+.hundred {
+	width: 100% !important;
+}
+
+input {
+    width: auto !important; /* force to expand to container's width */  
+}
+
+.fixed-panel {
+	max-height: 600px;
+	overflow-y: auto;
+}
+
+.top-buffer {
+	margin-top:10px;
+}
+
+.buttonPadding {
+	margin-left:10px;
+}
+
+.bottomPadding {
+	margin-bottom: 5px !important;
+}
+
+.toggleDisplayOff {
+	display: none;
+}
+
+.toggleDisplayOn {
+	display: block;
+}
+
+textarea {
+	width: auto !important;
+}
