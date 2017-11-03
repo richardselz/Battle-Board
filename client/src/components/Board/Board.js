@@ -100,6 +100,7 @@ class Board extends Component {
 			myOrderArray.sort(function(a, b) {
 				return parseFloat(a.finalInit) - parseFloat(b.finalInit);
 			}).reverse();
+			console.log("After Reverse?", this.charArray);
 			this.setState({charArray: myOrderArray});
 		})
 		.catch(err => console.log(err));
@@ -171,7 +172,7 @@ class Board extends Component {
 							<div className="container">
 								<div className = "row">
 									{this.state.charArray.map(info => (
-										<Character charList={info} updateBoard={this.getBoard}/>
+										<Character charList={info} updateBoard={this.getBoard} uniqueness={this.state.uniqueValue}/>
 									))}
 								</div>
 							</div>

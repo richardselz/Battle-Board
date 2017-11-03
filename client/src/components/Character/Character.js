@@ -76,8 +76,8 @@ class Character extends Component {
 		return (
 			<div className = "col-sm-4 charCard">
 				<div class="panel panel-default">
-					<div className={"panel-body"+(this.state.uniqueVal === 0?("active-player"):("not-active"))}>
-						<p className="charName">{this.state.charName}</p>
+					<div className={"panel-body "+(this.props.uniqueness === this.state.i?("active-player"):("not-active"))}>
+						<p className="charName">{this.state.charName}</p> {/*and {this.state.i} and {this.props.uniqueness}*/}
 						<form className="bodyText" role="form">
 							<div className="form-group">
 								Initiative Bonus: {this.state.initBonus}<br />
