@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TopNav from "../TopNav/TopNav.js";
 import API from "../../utils/API.js";
 import ReactDOM from 'react-dom';
+import logo from '../../Battle-Board.png';
 import './LogReg.css';
 import {BrowserRouter as Router,Route,Link,Redirect,withRouter} from 'react-router-dom';
 
@@ -61,8 +62,26 @@ class LogReg extends Component{
         }
         return(
             <div>
-                <TopNav/>
-            
+                <div className="TopNav">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <img src={logo} alt="Battle Board Logo"/>
+                            </div>
+                            <div className="col-sm-6 text-right">
+                                <Link style={{ color: '#428bca' }} to='/'>Home</Link>
+                                &nbsp; | &nbsp;
+                                <Link style={{ color: '#428bca' }} to="/dashboard">Dashboard</Link>
+                                &nbsp; | &nbsp;
+                                <Link style={{ color: '#428bca' }} to="/game">Game</Link>
+                                &nbsp; | &nbsp;
+                                <Link style={{ color: '#428bca' }} to="/board">Board</Link>
+                                &nbsp; | &nbsp;
+                                <Link style={{ color: '#428bca' }} to="/" onClick={this.handleLogout}>Log Out</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="signupSection">
                     <div className="info">
                     <h2>BattleBoard</h2>
@@ -89,10 +108,9 @@ class LogReg extends Component{
                         </li>
                     </ul>
                     </form>
-                    <br/><br/><br/>
                     <form action="#" method="POST" className="signupForm" name="signupform">
                     <h2>Log In</h2>
-                    <ul className="noBullet">
+                    <ul className="noBullet" id="login-container">
                         <li>
                         <label for="username"></label>
                         <input type="text" className="inputFields" name="usernameLog" placeholder="Username" value={this.state.usernameLog} onChange={this.handleInputChange} required/>
@@ -106,8 +124,6 @@ class LogReg extends Component{
                         </li>
                     </ul>
                     </form>
-                    <br/><br/><br/>
-                    <button className="btn btn-primary center-block" onClick={this.handleLogout} type="submit" value="logout"><span className="buttonText">Logout!</span></button>
                 </div>
             </div>
         );

@@ -167,7 +167,7 @@ class Game extends Component {
 										&nbsp; | &nbsp;
 										<Link style={{ color: '#428bca' }} to="/board">Board</Link>
 										&nbsp; | &nbsp;
-										<Link style={{ color: '#428bca' }} to="/" onClick={this.handleLogout}>Log/Register</Link>
+										<Link style={{ color: '#428bca' }} to="/" onClick={this.handleLogout}>Log Out</Link>
 									</div>
 								</div>
 							</div>
