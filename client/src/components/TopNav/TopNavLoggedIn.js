@@ -5,6 +5,7 @@ import logo from '../../Battle-Board.png';
 
 // The Header creates links that can be used to navigate
 // between routes.
+
 const TopNav = () => (
 
 	<div className="TopNav">
@@ -22,7 +23,7 @@ const TopNav = () => (
 		 			&nbsp; | &nbsp;
 		 			<Link style={{ color: '#428bca' }} to="/board">Board</Link>
 					&nbsp; | &nbsp;
-					<Link style={{ color: '#428bca' }} to="/login-signup">Log/Register</Link>
+					<Link style={{ color: '#428bca' }} to="/" onClick={()=>this.handleLogout()}>Logout</Link>
 				</div>
 			</div>
 		</div>

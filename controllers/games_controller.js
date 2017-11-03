@@ -30,7 +30,7 @@ exports.all = function(req, res) {
             res.json(data);
         }).catch(function(err) {
             res.json(err);
-        })
+        });
 };
 
 exports.update = function(req, res) {

@@ -64,6 +64,9 @@ class Board extends Component {
 				{
 					console.log("I don't think I know who goes first");
 				}
+		}).catch(err => {
+			console.log("Get Games returns Error, no games?: ",err);
+			window.location = "/dashboard";
 		});
 
 		this.getBoard(gameID);

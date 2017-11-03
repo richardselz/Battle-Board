@@ -31,8 +31,10 @@ exports.create = function(req, res) {
 exports.all = function(req, res) {
     sdb.Board.findAll({})
         .then(function(data) {
+            console.log("In board findall!");
             res.json(data);
         }).catch(function(err) {
+            console.log("In board error findall");
             res.json(err);
         });
 };

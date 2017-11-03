@@ -4,6 +4,7 @@ import TopNav from "../TopNav/TopNavLoggedIn";
 import API from "../../utils/API.js";
 import { sockets } from "../../utils/sockets.js";
 import ReactDOM from 'react-dom';
+import logo from '../../Battle-Board.png';
 import {BrowserRouter as Router,Route,Link,Redirect,withRouter} from 'react-router-dom';
 
 
@@ -133,7 +134,14 @@ class Game extends Component {
 					});
 				}
 		})
-		.catch(err => console.log(err));
+		.catch(err => console.log("Get Games Error: ",err));
+	}
+
+	handleLogout = event => {
+		event.preventDefault();
+		API.logout().then(res =>{
+			window.location = "/";
+		});
 	}
 
 	getRender() {
@@ -144,7 +152,26 @@ class Game extends Component {
 			else {
 				return (
 					<div>
-						<TopNav />
+						<div className="TopNav">
+							<div className="container-fluid">
+								<div className="row">
+									<div className="col-sm-6">
+										<img src={logo} alt="Battle Board Logo"/>
+									</div>
+									<div className="col-sm-6 text-right">
+										<Link style={{ color: '#428bca' }} to='/'>Home</Link>
+										&nbsp; | &nbsp;
+										<Link style={{ color: '#428bca' }} to="/dashboard">Dashboard</Link>
+										&nbsp; | &nbsp;
+										<Link style={{ color: '#428bca' }} to="/game">Game</Link>
+										&nbsp; | &nbsp;
+										<Link style={{ color: '#428bca' }} to="/board">Board</Link>
+										&nbsp; | &nbsp;
+										<Link style={{ color: '#428bca' }} to="/" onClick={this.handleLogout}>Log/Register</Link>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div className="container">
 							<div className="row">
 								<div className="col-sm-12 headerText text-center">
