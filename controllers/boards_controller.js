@@ -39,7 +39,7 @@ exports.all = function(req, res) {
 
 exports.characters = function(req, res) {
     console.log("Boards Characters req.body.gameID: ",req.body.gameID);
-    let sqlQuery = "SELECT * FROM Characters WHERE character_id IN (SELECT character_id FROM boards WHERE game_id = ";
+    let sqlQuery = "SELECT * FROM Characters WHERE character_id IN (SELECT character_id FROM Boards WHERE game_id = ";
     sqlQuery += req.body.gameID;
     sqlQuery += ")";
     sdb.sequelize.query(sqlQuery)
