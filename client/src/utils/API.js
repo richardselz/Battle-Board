@@ -121,5 +121,27 @@ export default {
 		return axios.post("/boards/delete", gameID).then((games) => {
 			return games;
 		});
+	},
+
+	updateRound: function(roundUpdate) {
+		console.log("Inside API updateaRound", roundUpdate);
+		return axios.post("/games/updateround", roundUpdate).then((data) => {
+			return data;
+		});
+	},
+
+	updateTurn: function(turnUpdate) {
+		console.log("Inside API updateTurn", turnUpdate);
+		return axios.post("/games/updateturn", turnUpdate).then((data)=>{
+			return data;
+		});
+	},
+
+	getRound: function(getRound) {
+		console.log("Inside getRound");
+		return axios.post("/games/roundcheck", getRound).then((res) => {
+			console.log("getRound: ",res);
+			return res;
+		})
 	}
 };

@@ -22,6 +22,9 @@ module.exports = function(app, passport) {
     app.post("/games/update", gamesController.update);
     app.post("/games/delete", gamesController.delete);
     app.post("/games/resetturn", gamesController.resetturn);
+    app.post("/games/updateround", gamesController.updateround);
+    app.post("/games/updateturn", gamesController.updateturn);
+    app.post("/games/roundcheck", gamesController.roundcheck);
 
     // Board Routes
     app.post("/boards/create", boardsController.create);

@@ -35,6 +35,11 @@ class Board extends Component {
   	}
 
 	componentDidMount() {
+		API.getRound({game_id: sessionStorage.getItem("gameID")}).then(res => {
+			console.log("getRound in didmount: ",res);
+			this.setState({round: res.data.round});
+			this.setState({turn_id: res.data.turn_id});
+		});
 		API.userLoggedIn()
 		.then(res => {
 			this.setState({userPromise: true});
@@ -50,7 +55,6 @@ class Board extends Component {
 		let gameID = {
 			gameID: sessionStorage.getItem("gameID")
 		};
-
 		let turnID = {
 			turn_id: null
 		};
@@ -100,7 +104,7 @@ class Board extends Component {
 				return parseFloat(a.finalInit) - parseFloat(b.finalInit);
 			}).reverse();
 			for(let j = 0; j < myOrderArray.length; j++) {
-				myOrderArray[j].i = j;	
+				myOrderArray[j].i = j;
 			}
 			console.log("After Reverse?", this.charArray);
 			this.setState({charArray: myOrderArray});
@@ -124,7 +128,6 @@ class Board extends Component {
 		};
 		console.log("after trigger, charArray is", this.state.charArray);
 	}
-
 	nextPlayer = event =>  {
 		event.preventDefault();
 		console.log("Inside nextPlay", this.state.charArray.length, " ",this.state.uniqueValue);
@@ -132,11 +135,18 @@ class Board extends Component {
 		if(uniqueVal >= this.state.charArray.length) {
 			let roundVal = this.state.round + 1;
 			console.log("Here!");
-			this.setState({round: roundVal});
-			this.setState({uniqueValue: 0});
+			this.setState({round: roundVal}, () => {this.setState({uniqueValue: 0}, () => {
+				API.updateTurn({turn_id: this.state.uniqueValue, game_id: sessionStorage.getItem("gameID")});
+				API.updateRound({round_id: this.state.round, game_id: sessionStorage.getItem("gameID")});
+			});});
+			// this.setState({uniqueValue: 0});
+			// API.updateTurn({turn_id: this.state.uniqueValue});
+			// API.updateRound({round_id: this.state.round});
 		}else {
 			console.log("Adding Values!");
-			this.setState({uniqueValue: uniqueVal});
+			this.setState({uniqueValue: uniqueVal}, () => {
+				API.updateTurn({turn_id: this.state.uniqueValue,game_id: sessionStorage.getItem("gameID")});
+			});
 		}
 	}
 
