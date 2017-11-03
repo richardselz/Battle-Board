@@ -88,7 +88,6 @@ class Board extends Component {
 				charEntry.initRoll = res.data[0][i].initiative_roll;
 				charEntry.finalInit = 0;
 				charEntry.conditions = res.data[0][i].conditions;
-				charEntry.i = i;
 				if(res.data[0][i].isCharacter) {
 					charEntry.deleteButton = "toggleDisplayOff";
 				}
@@ -100,6 +99,9 @@ class Board extends Component {
 			myOrderArray.sort(function(a, b) {
 				return parseFloat(a.finalInit) - parseFloat(b.finalInit);
 			}).reverse();
+			for(let j = 0; j < myOrderArray.length; j++) {
+				myOrderArray[j].i = j;	
+			}
 			console.log("After Reverse?", this.charArray);
 			this.setState({charArray: myOrderArray});
 		})
