@@ -48,13 +48,7 @@ module.exports = function(app, passport) {
     // Send every request to the React app
     // Define any API routes before this runs
 
-    app.get("*", (req, res) => {
-        if (process.env.NODE_ENV === "production") {
-            res.sendFile(__dirname + "../../client/build/index.html");
-        } else {
-            res.sendFile(__dirname + "../../client/public/index.html");
-        }
-    });
+    
 
     function isLoggedIn(req, res, next) {
         if(req.isAuthenticated()) return next();
