@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import TopNav from "../TopNav/TopNav.js";
 import API from "../../utils/API.js";
 import ReactDOM from 'react-dom';
-import './LogReg.scss';
+import './LogReg.css';
 import {BrowserRouter as Router,Route,Link,Redirect,withRouter} from 'react-router-dom';
 
 class LogReg extends Component{
     state = {
         username: "",
         password: "",
+        usernameLog: "",
+        passswordLog: "",
         email: "",
         redirect: false
     }
@@ -38,8 +40,8 @@ class LogReg extends Component{
     handleLogin = event => {
         event.preventDefault();
         API.login({
-            username: this.state.username,
-            password: this.state.password
+            username: this.state.usernameLog,
+            password: this.state.passwordLog
         }).then(res => {
             this.setState({redirect: true});
         }).catch(err => {
@@ -89,15 +91,15 @@ class LogReg extends Component{
                     </form>
                     <br/><br/><br/>
                     <form action="#" method="POST" className="signupForm" name="signupform">
-                    <h2>Sign Up</h2>
+                    <h2>Log In</h2>
                     <ul className="noBullet">
                         <li>
                         <label for="username"></label>
-                        <input type="text" className="inputFields" id="username" name="username" placeholder="Username" value={this.state.username} onChange={this.handleInputChange} required/>
+                        <input type="text" className="inputFields" name="usernameLog" placeholder="Username" value={this.state.usernameLog} onChange={this.handleInputChange} required/>
                         </li>
                         <li>
                         <label for="password"></label>
-                        <input type="password" className="inputFields" id="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required/>
+                        <input type="password" className="inputFields" name="passwordLog" placeholder="Password" value={this.state.passwordLog} onChange={this.handleInputChange} required/>
                         </li>
                         <li id="center-btn">
                         <input type="submit" id="join-btn" name="login" alt="Login" value="Login" onClick={this.handleLogin}/>
