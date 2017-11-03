@@ -16,10 +16,11 @@ class Board extends Component {
     	this.state = {
 			charArray: [],
 			gameName: "",
-			round: 0,
+			round: 1,
 			turn_id: null,
 			redirect: false,
-			userPromise: false
+			userPromise: false,
+			uniqueValue: 0
 		};
 
 		this.getBoard = this.getBoard.bind(this);
@@ -78,7 +79,7 @@ class Board extends Component {
 		.then(res => {
 			for (let i = 0; i < res.data[0].length; i++) {
 				let charEntry = {};
-				charEntry.uniqueValue = i;
+				charEntry.uniqueVal = this.state.uniqueValue;
 				charEntry.charID = res.data[0][i].character_id;
 				charEntry.charName = res.data[0][i].character_name;
 				charEntry.hitPoints = res.data[0][i].hitpoints;
@@ -87,6 +88,7 @@ class Board extends Component {
 				charEntry.initRoll = res.data[0][i].initiative_roll;
 				charEntry.finalInit = 0;
 				charEntry.conditions = res.data[0][i].conditions;
+				charEntry.i = i;
 				if(res.data[0][i].isCharacter) {
 					charEntry.deleteButton = "toggleDisplayOff";
 				}
@@ -120,6 +122,21 @@ class Board extends Component {
 		console.log("after trigger, charArray is", this.state.charArray);
 	}
 
+	nextPlayer = event =>  {
+		event.preventDefault();
+		console.log("Inside nextPlay", this.state.charArray.length, " ",this.state.uniqueValue);
+		let uniqueVal = this.state.uniqueValue + 1;
+		if(uniqueVal >= this.state.charArray.length) {
+			let roundVal = this.state.round + 1;
+			console.log("Here!");
+			this.setState({round: roundVal});
+			this.setState({uniqueValue: 0});
+		}else {
+			console.log("Adding Values!");
+			this.setState({uniqueValue: uniqueVal});
+		}
+	}
+
 	getRender() {
 		const { redirect } = this.state;
 		if(redirect) {
@@ -144,6 +161,9 @@ class Board extends Component {
 								</div>
 								<div className="col-sm-1 headerText">
 									{this.state.round}
+								</div>
+								<div className="col-sm-2 headerText">
+									<button className="btn btn-primary" onClick={(e)=>this.nextPlayer(e)}><span className="buttonText">Next</span></button>
 								</div>
 							</div>
 						</div>

@@ -17,7 +17,9 @@ class Character extends Component {
 			hitPoints: this.props.charList.hitPoints,
 			initBonus: this.props.charList.initBonus,
 			initRoll: this.props.charList.initRoll,
-			deleteButton: this.props.charList.deleteButton
+			deleteButton: this.props.charList.deleteButton,
+			uniqueVal: this.props.charList.uniqueVal,
+			i: this.props.charList.i,
 		}
 	}
 
@@ -74,7 +76,7 @@ class Character extends Component {
 		return (
 			<div className = "col-sm-4 charCard">
 				<div class="panel panel-default">
-					<div class="panel-body">
+					<div className={"panel-body"+(this.state.uniqueVal === 0?("active-player"):("not-active"))}>
 						<p className="charName">{this.state.charName}</p>
 						<form className="bodyText" role="form">
 							<div className="form-group">
