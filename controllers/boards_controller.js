@@ -44,8 +44,10 @@ exports.characters = function(req, res) {
     sqlQuery += ")";
     sdb.sequelize.query(sqlQuery)
         .then(function(data){
+            console.log("Success in Boards Characters: ",data);
             res.json(data);})
         .catch(function(err) {
+            console.log("Error in Boards Characters: ",err);
             res.json(err);
         });
 };
