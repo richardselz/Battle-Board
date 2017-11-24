@@ -1,5 +1,7 @@
 # Battle Board
 
+This repo was created due to the fact our "Organization" repo requires reviews before committing. Thus to do testing on Heroku it was easier to deploy off of my own repo.
+
 ## Dependencies:
 - Express
 - Express Session (express-session)
